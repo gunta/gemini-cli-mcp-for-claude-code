@@ -1,0 +1,100 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Gemini CLI MCP for Claude",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#0D9373",
+    "light": "#10B981",
+    "dark": "#0D9373",
+    "background": {
+      "dark": "#090D1F"
+    },
+    "anchors": {
+      "from": "#0D9373",
+      "to": "#10B981"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/gunta/gemini-cli-mcp-for-claude-code"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Get Started",
+    "url": "https://github.com/gunta/gemini-cli-mcp-for-claude-code"
+  },
+  "tabs": [
+    {
+      "name": "API Reference",
+      "url": "api-reference"
+    },
+    {
+      "name": "Tools",
+      "url": "tools"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "Documentation",
+      "icon": "book-open-cover",
+      "url": "https://github.com/gunta/gemini-cli-mcp-for-claude-code"
+    },
+    {
+      "name": "Blog",
+      "icon": "newspaper",
+      "url": "https://blog.anthropic.com"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": [
+        "introduction",
+        "quickstart",
+        "installation",
+        "configuration"
+      ]
+    },
+    {
+      "group": "Media Generation",
+      "pages": [
+        "tools/overview",
+        "tools/text-generation",
+        "tools/image-generation",
+        "tools/video-generation",
+        "tools/audio-synthesis",
+        "tools/music-generation"
+      ]
+    },
+    {
+      "group": "Media Processing",
+      "pages": [
+        "tools/media-info",
+        "tools/media-conversion",
+        "tools/media-manipulation"
+      ]
+    },
+    {
+      "group": "API Documentation",
+      "pages": [
+        "api-reference/introduction",
+        "api-reference/authentication",
+        "api-reference/endpoints"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "github": "https://github.com/gunta/gemini-cli-mcp-for-claude-code",
+    "discord": "https://discord.gg/claude"
+  },
+  "analytics": {
+    "ga4": {
+      "measurementId": "G-XXXXXXXXXX"
+    }
+  }
+}

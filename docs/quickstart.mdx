@@ -1,0 +1,228 @@
+---
+title: 'Quickstart'
+description: 'Get up and running in under 5 minutes'
+icon: 'bolt'
+---
+
+## Installation
+
+Choose your preferred installation method:
+
+<Tabs>
+  <Tab title="DXT (Recommended)">
+    The easiest way to install is using DXT, Anthropic's official MCP server manager:
+
+    ```bash
+    dxt install gemini-cli-mcp-for-claude
+    ```
+
+    That's it! DXT will handle all the configuration for you.
+  </Tab>
+  
+  <Tab title="Manual Installation">
+    If you prefer manual installation:
+
+    ```bash
+    # Clone the repository
+    git clone https://github.com/gunta/gemini-cli-mcp-for-claude-code.git
+    cd gemini-cli-mcp-for-claude-code
+
+    # Install dependencies
+    npm install
+
+    # Build the project
+    npm run build
+    ```
+  </Tab>
+</Tabs>
+
+## Configuration
+
+### 1. Get your Gemini API Key
+
+First, you'll need a Google Gemini API key:
+
+<Steps>
+  <Step title="Visit Google AI Studio">
+    Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
+  </Step>
+  <Step title="Create API Key">
+    Click "Create API Key" and copy it
+  </Step>
+  <Step title="Save securely">
+    Store your API key in a secure location
+  </Step>
+</Steps>
+
+### 2. Configure Claude Desktop
+
+Add the MCP server to your Claude Desktop configuration:
+
+<CodeGroup>
+```json macOS
+{
+  "mcpServers": {
+    "gemini": {
+      "command": "node",
+      "args": ["/path/to/gemini-cli-mcp-for-claude/dist/index.js"],
+      "env": {
+        "GEMINI_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}
+```
+
+```json Windows
+{
+  "mcpServers": {
+    "gemini": {
+      "command": "node",
+      "args": ["C:\\path\\to\\gemini-cli-mcp-for-claude\\dist\\index.js"],
+      "env": {
+        "GEMINI_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}
+```
+
+```json Linux
+{
+  "mcpServers": {
+    "gemini": {
+      "command": "node",
+      "args": ["/home/user/gemini-cli-mcp-for-claude/dist/index.js"],
+      "env": {
+        "GEMINI_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}
+```
+</CodeGroup>
+
+<Note>
+  The configuration file location varies by platform:
+  - **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+  - **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+  - **Linux**: `~/.config/Claude/claude_desktop_config.json`
+</Note>
+
+### 3. Environment Variables
+
+You can configure the following environment variables:
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `GEMINI_API_KEY` | Your Google Gemini API key | Required |
+| `GEMINI_CLI_PATH` | Path to Gemini CLI (for full features) | Optional |
+| `GEMINI_MODEL` | Default model to use | `gemini-2.0-flash-thinking-exp-1219` |
+| `GEMINI_TEMPERATURE` | Default temperature | `0.7` |
+| `GEMINI_MAX_TOKENS` | Default max tokens | `8192` |
+
+## Your First Generation
+
+Once configured, restart Claude Desktop and try these examples:
+
+### Generate an Image
+
+```text
+Generate a photorealistic image of a futuristic city at sunset with flying cars
+```
+
+### Create a Video
+
+```text
+Create a video of a butterfly emerging from its chrysalis and taking flight
+```
+
+### Generate Music
+
+```text
+Compose an upbeat electronic dance track with tropical house influences
+```
+
+### Synthesize Speech
+
+```text
+Convert this text to speech with a professional female voice: 
+"Welcome to the future of AI-powered media generation"
+```
+
+## Advanced Usage
+
+### Using Multiple Tools Together
+
+Create a complete video with music:
+
+```text
+1. Generate a 8-second video of ocean waves at sunset
+2. Create calming ambient music to match the video duration
+3. Combine the video and music into a final production
+```
+
+### Batch Processing
+
+Generate multiple variations:
+
+```text
+Create 4 different images of "a magical forest with glowing mushrooms" 
+using different artistic styles
+```
+
+### Custom Workflows
+
+Build complex media pipelines:
+
+```text
+1. Generate an image of a logo design
+2. Create a GIF animation from the logo
+3. Add a watermark to a video using the logo
+4. Generate background music for the video
+5. Combine everything into a branded video
+```
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Claude doesn't recognize the MCP server">
+    1. Ensure Claude Desktop is fully closed
+    2. Verify your configuration file is valid JSON
+    3. Check the path to the MCP server is correct
+    4. Restart Claude Desktop
+  </Accordion>
+  
+  <Accordion title="API key errors">
+    1. Verify your API key is valid
+    2. Check you have the correct permissions
+    3. Ensure the key hasn't expired
+    4. Try generating a new API key
+  </Accordion>
+  
+  <Accordion title="Generation failures">
+    1. Check your internet connection
+    2. Verify you haven't exceeded API quotas
+    3. Try a simpler prompt first
+    4. Check the error message for specific issues
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+Now that you're set up, explore:
+
+<CardGroup cols={2}>
+  <Card title="Tools Overview" icon="toolbox" href="/tools/overview">
+    Discover all 20+ available tools
+  </Card>
+  <Card title="Image Generation" icon="image" href="/tools/image-generation">
+    Master Imagen 3 capabilities
+  </Card>
+  <Card title="Video Creation" icon="video" href="/tools/video-generation">
+    Learn Veo 2 video generation
+  </Card>
+  <Card title="API Reference" icon="code" href="/api-reference/introduction">
+    Deep dive into the API
+  </Card>
+</CardGroup>

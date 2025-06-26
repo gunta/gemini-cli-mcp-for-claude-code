@@ -1,0 +1,86 @@
+{
+  "name": "gemini-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server that provides Claude with access to Gemini's 1M token context, multimodal generation, and Google Search",
+  "author": "gemini-cli-mcp",
+  "license": "ISC",
+  "homepage": "https://github.com/gunta/gemini-cli-mcp-for-claude-code",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gunta/gemini-cli-mcp-for-claude-code.git"
+  },
+  "keywords": [
+    "mcp",
+    "gemini",
+    "ai",
+    "multimodal",
+    "google-search",
+    "claude",
+    "anthropic"
+  ],
+  "categories": [
+    "ai",
+    "productivity",
+    "search"
+  ],
+  "runtime": "node",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js"
+  },
+  "configuration": {
+    "properties": {
+      "GEMINI_API_KEY": {
+        "type": "string",
+        "description": "Google Gemini API key (required if not using CLI)",
+        "sensitive": true
+      },
+      "GEMINI_CLI_PATH": {
+        "type": "string",
+        "description": "Path to Gemini CLI executable (required if not using API key)"
+      },
+      "GEMINI_MODEL": {
+        "type": "string",
+        "description": "Gemini model to use",
+        "default": "gemini-2.0-flash-exp"
+      },
+      "GEMINI_TEMPERATURE": {
+        "type": "number",
+        "description": "Default temperature for generation",
+        "default": 0.7
+      },
+      "GEMINI_MAX_TOKENS": {
+        "type": "number",
+        "description": "Default max tokens for generation",
+        "default": 8192
+      }
+    },
+    "required": []
+  },
+  "tools": [
+    {
+      "name": "gemini_generate_text",
+      "description": "Generate text with 1M token context window and multimodal support"
+    },
+    {
+      "name": "gemini_generate_image",
+      "description": "Generate images using Gemini"
+    },
+    {
+      "name": "gemini_search_web",
+      "description": "Search the web using Google Search"
+    },
+    {
+      "name": "gemini_analyze_document",
+      "description": "Analyze documents (PDF, images, text)"
+    },
+    {
+      "name": "gemini_generate_video",
+      "description": "Generate videos using Gemini"
+    },
+    {
+      "name": "gemini_generate_pdf",
+      "description": "Generate PDF documents from text"
+    }
+  ]
+}

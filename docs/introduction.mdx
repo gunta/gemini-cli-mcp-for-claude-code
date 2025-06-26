@@ -1,0 +1,187 @@
+---
+title: 'Introduction'
+description: 'Supercharge Claude with Google's complete media generation suite'
+icon: 'rocket'
+---
+
+<img
+  className="block dark:hidden"
+  src="/images/hero-light.svg"
+  alt="Hero Light"
+/>
+<img
+  className="hidden dark:block"
+  src="/images/hero-dark.svg"
+  alt="Hero Dark"
+/>
+
+## Welcome to Gemini CLI MCP for Claude
+
+Give Claude Desktop and Claude Code access to **Google's COMPLETE media generation suite** - capabilities Claude completely lacks. This MCP server is a superset of Google's own mcp-genmedia, providing ALL the tools Claude needs for multimedia creation.
+
+<CardGroup cols={2}>
+  <Card
+    title="20+ Media Tools"
+    icon="wand-magic-sparkles"
+    href="/tools/overview"
+  >
+    Complete suite of text, image, video, audio, and music generation tools
+  </Card>
+  <Card
+    title="1M Token Context"
+    icon="brain"
+    href="/tools/text-generation"
+  >
+    5x larger context window than Claude's 200K limit
+  </Card>
+  <Card
+    title="Professional Quality"
+    icon="sparkles"
+    href="/tools/image-generation"
+  >
+    State-of-the-art Imagen 3, Veo 2, Chirp 3 HD, and Lyria models
+  </Card>
+  <Card
+    title="Easy Integration"
+    icon="plug"
+    href="/quickstart"
+  >
+    Simple setup with Claude Desktop via MCP protocol
+  </Card>
+</CardGroup>
+
+## What Claude Can't Do (But Now Can!)
+
+Claude has **ZERO** native capabilities for:
+
+- 🎨 **Image Generation** - Now powered by Imagen 3
+- 🎬 **Video Creation** - Text-to-video and image-to-video with Veo 2
+- 🎵 **Music Composition** - Professional music with Lyria
+- 🗣️ **Speech Synthesis** - Ultra-realistic voices with Chirp 3 HD
+- 🛠️ **Media Processing** - Complete FFmpeg toolkit
+
+## Features at a Glance
+
+### 🧠 Enhanced Text Generation
+- **1M token context window** (5x Claude's limit)
+- **Multimodal support** for images in prompts
+- **Google Search integration** for real-time information
+- **Latest model**: gemini-2.0-flash-thinking-exp-1219
+
+### 🎨 Image Generation (Imagen 3)
+- Photorealistic image generation
+- Multiple aspect ratios (1:1, 16:9, 9:16, 4:3, 3:4)
+- Batch generation (up to 4 images)
+- Cloud storage support
+
+### 🎬 Video Generation (Veo 2)
+- Text-to-video generation
+- Image-to-video animation
+- Multiple aspect ratios and durations
+- Veo 3.0 preview support
+
+### 🎵 Music Generation (Lyria)
+- Any genre or style
+- Negative prompts for fine control
+- Seed values for reproducibility
+- Professional quality output
+
+### 🗣️ Speech Synthesis (Chirp 3 HD)
+- 27+ languages with multiple voices
+- Custom pronunciation (IPA/X-SAMPA)
+- Broadcast-quality 24kHz WAV output
+
+### 🛠️ Media Manipulation (AVTool)
+- Convert formats
+- Create GIFs from videos
+- Overlay images and watermarks
+- Combine and layer audio tracks
+- Complete post-production workflows
+
+## Why This Matters
+
+With this MCP server, Claude becomes a **complete multimedia production suite**. You can:
+
+1. **Generate** content in any medium
+2. **Process** and manipulate media files
+3. **Combine** different media types
+4. **Create** professional productions
+
+All from within Claude's familiar interface!
+
+## Why This MCP Server?
+
+### The Problem with Other Gemini MCP Servers
+
+There are many MCP servers that wrap Gemini's capabilities. But here's the thing - **they all miss the point**.
+
+Most Gemini MCP servers simply expose the API without context. This means:
+- You have to manually tell Claude when to use Gemini vs its own capabilities
+- You need to maintain documentation about what Gemini is good at
+- Claude doesn't know which tool to use for which task
+- You end up with a disconnected experience
+
+### Why This One is Different
+
+**This MCP server is self-aware and Claude-aware.**
+
+Every tool description explicitly tells Claude:
+- When Gemini is SUPERIOR (1M tokens vs 200K)
+- What capabilities Claude COMPLETELY LACKS (images, video, music, speech)
+- Why it should use each specific tool
+
+For example, our text generation tool doesn't just say "generate text". It says:
+> "SUPERIOR capabilities vs Claude: 1M token context window (5x larger than Claude's 200K)"
+
+This means Claude automatically knows to use Gemini for:
+- Large documents that exceed its context window
+- Any media generation task it can't do natively
+- Complex multimodal inputs
+
+### No More CLAUDE.md Maintenance
+
+With other MCP servers, you'd need to constantly update your CLAUDE.md file:
+```markdown
+# When to use Gemini
+- For documents over 200K tokens
+- For image generation (Claude can't do this)
+- For video creation (Claude can't do this)
+- etc...
+```
+
+**With this MCP server, that's all built-in.** Claude knows exactly when and why to use each tool.
+
+### Complete, Not Just Connected
+
+This isn't just a thin wrapper around Gemini's API. It's a **superset** that includes:
+- All of Google's media generation models (Imagen 3, Veo 2, Lyria, Chirp 3 HD)
+- Complete FFmpeg toolkit for media processing
+- Batch operations and cloud storage
+- Tools that even Google's own MCP implementation doesn't have
+
+### The Result?
+
+You get a Claude that:
+1. **Knows its limitations** and automatically uses Gemini to overcome them
+2. **Chooses the right tool** without you having to specify
+3. **Works seamlessly** as if these capabilities were native
+
+No configuration. No maintenance. No confusion.
+
+Just a Claude with superpowers.
+
+## Getting Started
+
+<Steps>
+  <Step title="Install the MCP server">
+    Choose between DXT installation or manual setup
+  </Step>
+  <Step title="Configure Claude Desktop">
+    Add the server to your Claude configuration
+  </Step>
+  <Step title="Start creating">
+    Use natural language to generate any media type
+  </Step>
+</Steps>
+
+Ready to give Claude superpowers? Let's [get started](/quickstart)!

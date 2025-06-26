@@ -1,0 +1,245 @@
+---
+title: 'Tools Overview'
+description: 'Complete catalog of all 20+ media generation and processing tools'
+icon: 'toolbox'
+---
+
+## Available Tools
+
+This MCP server provides Claude with access to Google's complete media generation suite through 20+ specialized tools:
+
+<CardGroup cols={2}>
+  <Card title="Text & Analysis" icon="brain" color="#10B981">
+    3 tools for enhanced text generation and analysis
+  </Card>
+  <Card title="Image Generation" icon="image" color="#8B5CF6">
+    2 tools for creating stunning images
+  </Card>
+  <Card title="Video Generation" icon="video" color="#F59E0B">
+    3 tools for video creation and animation
+  </Card>
+  <Card title="Audio & Music" icon="music" color="#EF4444">
+    3 tools for speech and music generation
+  </Card>
+  <Card title="Media Processing" icon="wrench" color="#3B82F6">
+    8 tools for media manipulation
+  </Card>
+  <Card title="Document Generation" icon="file-pdf" color="#EC4899">
+    1 tool for PDF creation
+  </Card>
+</CardGroup>
+
+## Text & Analysis Tools
+
+### gemini_generate_text
+Enhanced text generation with 1M token context window - 5x larger than Claude's limit.
+
+**Key Features:**
+- Multimodal support (images in prompts)
+- Latest model: gemini-2.0-flash-thinking-exp-1219
+- Superior for code generation, math, and reasoning
+
+### gemini_search_web
+Direct Google Search integration for real-time information.
+
+**Key Features:**
+- Current events and news
+- Research and fact-checking
+- Configurable result count
+
+### gemini_analyze_document
+Advanced PDF and document analysis capabilities.
+
+**Key Features:**
+- Extract text from PDFs
+- Analyze document structure
+- Process multiple document types
+
+## Image Generation Tools
+
+### imagen_t2i
+State-of-the-art Imagen 3 text-to-image generation.
+
+**Key Features:**
+- Photorealistic quality
+- Multiple aspect ratios (1:1, 16:9, 9:16, 4:3, 3:4)
+- Batch generation (up to 4 images)
+- Cloud storage support
+
+### gemini_generate_image
+Legacy image generation tool for backward compatibility.
+
+## Video Generation Tools
+
+### veo_t2v
+Veo 2 text-to-video generation for creating videos from descriptions.
+
+**Key Features:**
+- 5-8 second videos
+- Multiple aspect ratios
+- Cinematic quality
+- Veo 3.0 preview support
+
+### veo_i2v
+Image-to-video animation to bring static images to life.
+
+**Key Features:**
+- Intelligent motion synthesis
+- Optional text guidance
+- Preserves image content
+
+### gemini_generate_video
+Legacy video generation for simple use cases.
+
+## Audio & Music Tools
+
+### chirp_tts
+Chirp 3 HD text-to-speech synthesis with ultra-realistic voices.
+
+**Key Features:**
+- 27+ languages
+- Multiple voices per language
+- Custom pronunciation (IPA/X-SAMPA)
+- 24kHz broadcast quality
+
+### list_chirp_voices
+List available Chirp voices by language.
+
+### lyria_generate_music
+Professional music generation with Lyria.
+
+**Key Features:**
+- Any genre or style
+- Negative prompts
+- Seed control
+- High-quality WAV output
+
+## Media Processing Tools
+
+### ffmpeg_get_media_info
+Extract detailed metadata from media files.
+
+### ffmpeg_convert_audio_wav_to_mp3
+Convert WAV audio files to MP3 format.
+
+### ffmpeg_video_to_gif
+Create high-quality GIFs from video files.
+
+**Key Features:**
+- Adjustable scale
+- Custom frame rate
+
+### ffmpeg_combine_audio_and_video
+Merge separate audio and video tracks.
+
+### ffmpeg_overlay_image_on_video
+Add watermarks, logos, or images to videos.
+
+**Key Features:**
+- Precise positioning
+- Transparency support
+
+### ffmpeg_concatenate_media_files
+Join multiple media files seamlessly.
+
+### ffmpeg_adjust_volume
+Control audio volume levels.
+
+**Key Features:**
+- Decibel-based adjustment
+- Prevent clipping
+
+### ffmpeg_layer_audio_files
+Mix multiple audio tracks together.
+
+## Document Tools
+
+### gemini_generate_pdf
+Create PDF documents from text content.
+
+**Key Features:**
+- Markdown support
+- Template system
+- Professional formatting
+
+## Tool Comparison
+
+| Capability | Claude Native | With This MCP |
+|------------|---------------|---------------|
+| Text Generation | ✅ 200K tokens | ✅ 1M tokens |
+| Web Search | ❌ | ✅ Google Search |
+| Image Generation | ❌ | ✅ Imagen 3 |
+| Video Generation | ❌ | ✅ Veo 2 |
+| Music Generation | ❌ | ✅ Lyria |
+| Speech Synthesis | ❌ | ✅ Chirp 3 HD |
+| Media Processing | ❌ | ✅ Full FFmpeg |
+| PDF Generation | ❌ | ✅ |
+
+## Usage Examples
+
+### Complete Video Production
+```text
+1. Use veo_t2v to generate a video
+2. Use lyria_generate_music to create soundtrack
+3. Use ffmpeg_combine_audio_and_video to merge
+4. Use ffmpeg_overlay_image_on_video for branding
+```
+
+### Multilingual Content
+```text
+1. Use gemini_generate_text to write content
+2. Use chirp_tts to create audio in multiple languages
+3. Use ffmpeg_layer_audio_files to create multilingual mix
+```
+
+### Social Media Package
+```text
+1. Use imagen_t2i to generate images
+2. Use ffmpeg_video_to_gif for animated versions
+3. Use veo_i2v to create video from best image
+4. Use ffmpeg_adjust_volume for platform requirements
+```
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Choose the right tool">
+    - Use Imagen 3 for photorealistic images
+    - Use Veo 2 for high-quality videos
+    - Use Chirp for natural speech
+    - Use Lyria for professional music
+  </Accordion>
+  
+  <Accordion title="Optimize for quality">
+    - Be specific in your prompts
+    - Use negative prompts when needed
+    - Generate multiple variations
+    - Use appropriate aspect ratios
+  </Accordion>
+  
+  <Accordion title="Efficient workflows">
+    - Batch similar operations
+    - Use cloud storage for large files
+    - Chain tools for complex tasks
+    - Save intermediate results
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+Ready to dive deeper? Explore specific tool categories:
+
+<CardGroup cols={2}>
+  <Card title="Text Generation" icon="brain" href="/tools/text-generation">
+    Master the 1M token context window
+  </Card>
+  <Card title="Image Generation" icon="image" href="/tools/image-generation">
+    Create stunning visuals with Imagen 3
+  </Card>
+  <Card title="Video Generation" icon="video" href="/tools/video-generation">
+    Bring your ideas to life with Veo 2
+  </Card>
+  <Card title="Audio Synthesis" icon="microphone" href="/tools/audio-synthesis">
+    Generate natural speech with Chirp 3 HD
+  </Card>
+</CardGroup>
