@@ -1,0 +1,55 @@
+# Source files
+src/
+*.ts
+!*.d.ts
+
+# Test files
+**/*.test.*
+**/*.spec.*
+coverage/
+.nyc_output/
+vitest.config.ts
+
+# Development files
+.eslintrc*
+.prettierrc*
+tsconfig.json
+eslint.config.mjs
+
+# Documentation
+docs/
+landing/
+*.md
+!README.md
+
+# CI/CD
+.github/
+iac/
+
+# Logs and temp files
+*.log
+*.tmp
+*.temp
+.cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Lock files (users should generate their own)
+bun.lockb
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment files
+.env*
+
+# Build artifacts that aren't needed
+tsconfig.tsbuildinfo

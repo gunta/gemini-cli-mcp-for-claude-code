@@ -1,0 +1,64 @@
+name: Manual Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release-type:
+        description: 'Release Type'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  manual-release:
+    name: Manual Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install Dependencies
+        run: bun install
+
+      - name: Build
+        run: bun run build
+
+      - name: Run Tests
+        run: bun test
+
+      - name: Create Changeset
+        run: |
+          cat << EOF > .changeset/manual-release.md
+          ---
+          "gemini-cli-mcp-for-claude": ${{ github.event.inputs.release-type }}
+          ---
+          
+          Manual release triggered via GitHub Actions
+          EOF
+
+      - name: Version Packages
+        run: bun run version
+
+      - name: Commit Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "chore: release v${{ github.event.inputs.release-type }}"
+          git push
+
+      - name: Publish to NPM
+        run: bun run release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

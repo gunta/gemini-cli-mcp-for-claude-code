@@ -59,6 +59,9 @@ Thumbs.db
 *.temp
 .cache/
 
+# Changesets (don't ignore)
+!.changeset/
+
 # Test artifacts
 test-results/
 playwright-report/

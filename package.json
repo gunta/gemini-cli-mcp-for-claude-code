@@ -4,6 +4,22 @@
   "description": "MCP server providing Claude with Gemini's superior capabilities: 1M token context, multimodal generation, and Google Search",
   "main": "dist/index.js",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "mcp.json"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsx watch src/index.ts",
@@ -19,14 +35,33 @@
     "docs:dev": "cd docs && ./run-mintlify.sh",
     "docs:dev:docker": "cd docs && docker-compose up",
     "docs:build": "cd docs && npx mintlify build",
-    "docs:build:docker": "cd docs && docker-compose run mintlify mintlify build"
+    "docs:build:docker": "cd docs && docker-compose run mintlify mintlify build",
+    "prepublishOnly": "bun run lint && bun run test && bun run build",
+    "publish:npm": "npm publish --access public",
+    "publish:dry": "npm publish --dry-run",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "bun run build && changeset publish"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gunta/gemini-cli-mcp-for-claude-code.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "gemini",
+    "google-gemini",
+    "ai",
+    "llm",
+    "media-generation",
+    "imagen",
+    "veo",
+    "lyria",
+    "chirp"
+  ],
+  "author": "Gunther Brunner <gunta@users.noreply.github.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/gunta/gemini-cli-mcp-for-claude-code/issues"
@@ -40,6 +75,7 @@
     "zod": "^3.25.67"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.5",
     "@modelcontextprotocol/inspector": "^0.14.3",
     "@testing-library/jest-dom": "^6.6.3",
     "@types/bun": "^1.2.17",

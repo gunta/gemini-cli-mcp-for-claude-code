@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { GeminiCliExtended } from './gemini-cli-extended.js';
 import type {
@@ -78,7 +80,7 @@ describe('GeminiCliExtended', () => {
 
     it('should include all optional parameters', async () => {
       const executeSpy = vi.spyOn(cli as any, 'executeCli');
-      
+
       const options: VideoGenerationOptions = {
         prompt: 'Test video',
         bucket: 'test-bucket',
@@ -91,9 +93,12 @@ describe('GeminiCliExtended', () => {
 
       expect(executeSpy).toHaveBeenCalledWith(
         expect.arrayContaining([
-          '--model', 'veo-3.0-preview',
-          '--num-videos', '3',
-          '--output-directory', '/tmp/videos',
+          '--model',
+          'veo-3.0-preview',
+          '--num-videos',
+          '3',
+          '--output-directory',
+          '/tmp/videos',
         ]),
       );
     });
@@ -125,7 +130,7 @@ describe('GeminiCliExtended', () => {
 
     it('should handle pronunciations', async () => {
       const executeSpy = vi.spyOn(cli as any, 'executeCli');
-      
+
       const options: AudioSynthesisOptions = {
         text: 'Test text',
         pronunciations: ['word=wɜrd', 'test=tɛst'],
@@ -136,9 +141,12 @@ describe('GeminiCliExtended', () => {
 
       expect(executeSpy).toHaveBeenCalledWith(
         expect.arrayContaining([
-          '--pronunciations', 'word=wɜrd',
-          '--pronunciations', 'test=tɛst',
-          '--pronunciation-encoding', 'ipa',
+          '--pronunciations',
+          'word=wɜrd',
+          '--pronunciations',
+          'test=tɛst',
+          '--pronunciation-encoding',
+          'ipa',
         ]),
       );
     });
@@ -209,7 +217,7 @@ describe('GeminiCliExtended', () => {
 
     it('should create GIF from video', async () => {
       const executeSpy = vi.spyOn(cli as any, 'executeCli');
-      
+
       await cli.videoToGif({
         inputPath: '/video.mp4',
         outputPath: '/output.gif',
@@ -218,10 +226,7 @@ describe('GeminiCliExtended', () => {
       });
 
       expect(executeSpy).toHaveBeenCalledWith(
-        expect.arrayContaining([
-          '--scale-width-factor', '0.5',
-          '--fps', '15',
-        ]),
+        expect.arrayContaining(['--scale-width-factor', '0.5', '--fps', '15']),
       );
     });
 

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { GeminiCliWrapper } from './gemini-cli.js';
 import type { GeminiConfig } from '../types/index.js';
@@ -60,7 +62,7 @@ describe('GeminiCliWrapper', () => {
 
     it('should include model parameter when configured', async () => {
       const executeSpy = vi.spyOn(wrapper as any, 'executeCli');
-      
+
       await wrapper.generateText({
         prompt: 'Test prompt',
       });
@@ -72,34 +74,30 @@ describe('GeminiCliWrapper', () => {
 
     it('should include temperature parameter', async () => {
       const executeSpy = vi.spyOn(wrapper as any, 'executeCli');
-      
+
       await wrapper.generateText({
         prompt: 'Test prompt',
         temperature: 0.9,
       });
 
-      expect(executeSpy).toHaveBeenCalledWith(
-        expect.arrayContaining(['--temperature', '0.9']),
-      );
+      expect(executeSpy).toHaveBeenCalledWith(expect.arrayContaining(['--temperature', '0.9']));
     });
 
     it('should handle images', async () => {
       const executeSpy = vi.spyOn(wrapper as any, 'executeCli');
       const imageBuffer = Buffer.from('fake image data');
-      
+
       await wrapper.generateText({
         prompt: 'Describe this image',
         images: [imageBuffer],
       });
 
-      expect(executeSpy).toHaveBeenCalledWith(
-        expect.arrayContaining(['--image']),
-      );
+      expect(executeSpy).toHaveBeenCalledWith(expect.arrayContaining(['--image']));
     });
 
     it('should handle documents', async () => {
       const executeSpy = vi.spyOn(wrapper as any, 'executeCli');
-      
+
       await wrapper.generateText({
         prompt: 'Analyze this document',
         documents: [
@@ -110,9 +108,7 @@ describe('GeminiCliWrapper', () => {
         ],
       });
 
-      expect(executeSpy).toHaveBeenCalledWith(
-        expect.arrayContaining(['--file']),
-      );
+      expect(executeSpy).toHaveBeenCalledWith(expect.arrayContaining(['--file']));
     });
   });
 
@@ -124,12 +120,10 @@ describe('GeminiCliWrapper', () => {
 
     it('should include numResults parameter', async () => {
       const executeSpy = vi.spyOn(wrapper as any, 'executeCli');
-      
+
       await wrapper.searchWeb('test query', { numResults: 5 });
 
-      expect(executeSpy).toHaveBeenCalledWith(
-        expect.arrayContaining(['--num-results', '5']),
-      );
+      expect(executeSpy).toHaveBeenCalledWith(expect.arrayContaining(['--num-results', '5']));
     });
   });
 
@@ -141,12 +135,10 @@ describe('GeminiCliWrapper', () => {
 
     it('should include size parameter', async () => {
       const executeSpy = vi.spyOn(wrapper as any, 'executeCli');
-      
+
       await wrapper.generateImage('A cat', { size: '1024x1024' });
 
-      expect(executeSpy).toHaveBeenCalledWith(
-        expect.arrayContaining(['--size', '1024x1024']),
-      );
+      expect(executeSpy).toHaveBeenCalledWith(expect.arrayContaining(['--size', '1024x1024']));
     });
   });
 
@@ -158,12 +150,10 @@ describe('GeminiCliWrapper', () => {
 
     it('should include duration parameter', async () => {
       const executeSpy = vi.spyOn(wrapper as any, 'executeCli');
-      
+
       await wrapper.generateVideoLegacy('Animation', { duration: 10 });
 
-      expect(executeSpy).toHaveBeenCalledWith(
-        expect.arrayContaining(['--duration', '10']),
-      );
+      expect(executeSpy).toHaveBeenCalledWith(expect.arrayContaining(['--duration', '10']));
     });
   });
 
@@ -175,12 +165,10 @@ describe('GeminiCliWrapper', () => {
 
     it('should include template parameter', async () => {
       const executeSpy = vi.spyOn(wrapper as any, 'executeCli');
-      
+
       await wrapper.generatePdf('Content', { template: 'invoice' });
 
-      expect(executeSpy).toHaveBeenCalledWith(
-        expect.arrayContaining(['--template', 'invoice']),
-      );
+      expect(executeSpy).toHaveBeenCalledWith(expect.arrayContaining(['--template', 'invoice']));
     });
   });
 });
