@@ -1,7 +1,17 @@
-import { motion } from 'framer-motion';
+'use client';
+
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Sparkles, Brain, Image, Video, Music, Mic } from 'lucide-react';
+import { useRef } from 'react';
 
 export default function Hero() {
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end start'],
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
   const features = [
     { icon: Brain, text: '1M Token Context', color: 'text-blue-400' },
     { icon: Image, text: 'Image Generation', color: 'text-purple-400' },
@@ -11,12 +21,15 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950">
-      {/* Animated background */}
-      <div className="absolute inset-0">
+    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950">
+      {/* Animated background with parallax */}
+      <motion.div 
+        className="absolute inset-0"
+        style={{ y }}
+      >
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900" />
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-      </div>
+      </motion.div>
 
       {/* Floating orbs */}
       <motion.div

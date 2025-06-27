@@ -3,10 +3,21 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero';
 import Features from '../components/Features';
 import Demo from '../components/Demo';
-import { motion } from 'framer-motion';
+
+// Preload critical assets
+const criticalAssets = [
+  '/grid.svg',
+  '/favicon.svg',
+];
 ---
 
 <Layout title="Gemini CLI MCP for Claude - Supercharge Claude with Media Generation">
+  <Fragment slot="head">
+    {criticalAssets.map((asset) => (
+      <link rel="preload" href={asset} as="image" />
+    ))}
+  </Fragment>
+  
   <main>
     <Hero client:load />
     <Features client:visible />

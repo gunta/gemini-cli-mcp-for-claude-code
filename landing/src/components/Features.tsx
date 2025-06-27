@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { Brain, Image, Video, Music, Mic, Wrench, Search, FileText, Sparkles } from 'lucide-react';
 

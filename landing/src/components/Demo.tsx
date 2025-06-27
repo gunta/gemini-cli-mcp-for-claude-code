@@ -1,9 +1,12 @@
+'use client';
+
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 import { Play, Image, Video, Music, Mic } from 'lucide-react';
 
 export default function Demo() {
   const [activeDemo, setActiveDemo] = useState('image');
+  const [, startTransition] = useTransition();
 
   const demos = {
     image: {
@@ -62,7 +65,7 @@ export default function Demo() {
               key={key}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setActiveDemo(key)}
+              onClick={() => startTransition(() => setActiveDemo(key))}
               className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                 activeDemo === key
                   ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg shadow-purple-500/25'

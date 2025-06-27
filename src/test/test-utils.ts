@@ -5,7 +5,7 @@ export const mockGeminiClient = {
 };
 
 export const mockGeminiCliWrapper = {
-  generateText: vi.fn(() => Promise.resolve('Mock CLI output')),
+  generateText: vi.fn(() => Promise.resolve('Mock generated text')), // Changed to match client output
   searchWeb: vi.fn(() => Promise.resolve('Mock search results')),
   generateImage: vi.fn(() => Promise.resolve(Buffer.from('mock image data'))),
   generateVideoLegacy: vi.fn(() => Promise.resolve(Buffer.from('mock video data'))),
@@ -54,11 +54,14 @@ export const mockGeminiCliWrapper = {
   layerAudio: vi.fn(() => Promise.resolve()),
 };
 
-// Mock the constructors
-vi.mock('../utils/gemini-client.js', () => ({
-  GeminiClient: vi.fn(() => mockGeminiClient),
-}));
+// Only mock if not running in Bun test environment
+if (typeof Bun === 'undefined') {
+  // Mock the constructors for Vitest
+  vi.mock('../utils/gemini-client.js', () => ({
+    GeminiClient: vi.fn(() => mockGeminiClient),
+  }));
 
-vi.mock('../utils/gemini-cli.js', () => ({
-  GeminiCliWrapper: vi.fn(() => mockGeminiCliWrapper),
-}));
+  vi.mock('../utils/gemini-cli.js', () => ({
+    GeminiCliWrapper: vi.fn(() => mockGeminiCliWrapper),
+  }));
+}

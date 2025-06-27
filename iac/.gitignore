@@ -1,0 +1,21 @@
+# Environment files with sensitive data
+providers/*.env
+!providers/*.env.example
+
+# Alchemy state files
+.alchemy/
+
+# Node modules
+node_modules/
+
+# Build outputs
+dist/
+.mintlify/
+
+# Temporary files
+*.tmp
+*.log
+.DS_Store
+
+# Bun
+bun.lockb

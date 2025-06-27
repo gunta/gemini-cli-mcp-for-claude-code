@@ -2,6 +2,7 @@
 node_modules/
 .pnp
 .pnp.js
+bun.lockb
 
 # Testing
 coverage/
@@ -47,6 +48,7 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
+bun-error.log
 
 # OS
 .DS_Store
