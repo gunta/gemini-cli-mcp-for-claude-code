@@ -44,3 +44,25 @@ jobs:
       - name: Publish to NPM if Release Created
         if: steps.changesets.outputs.published == 'true'
         run: echo "🎉 Successfully published to npm!"
+
+      - name: Build DXT Extension
+        if: steps.changesets.outputs.published == 'true'
+        run: bun run dxt:pack
+
+      - name: Get Version from Package
+        if: steps.changesets.outputs.published == 'true'
+        id: package-version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Upload DXT to Release
+        if: steps.changesets.outputs.published == 'true'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.package-version.outputs.version }}
+          files: |
+            mcp-server/*.dxt
+          fail_on_unmatched_files: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

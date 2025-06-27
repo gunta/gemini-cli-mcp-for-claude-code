@@ -1,0 +1,97 @@
+name: DXT Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  build-and-release-dxt:
+    name: Build and Release DXT
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install Dependencies
+        run: bun install
+
+      - name: Build Project
+        run: bun run build
+
+      - name: Pack DXT Extension
+        run: bun run dxt:pack
+
+      - name: Get DXT Filename
+        id: dxt-name
+        run: |
+          DXT_FILE=$(ls mcp-server/*.dxt | head -n1)
+          echo "filename=$DXT_FILE" >> $GITHUB_OUTPUT
+          echo "Found DXT file: $DXT_FILE"
+
+      - name: Upload DXT to Release
+        if: github.event_name == 'release'
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./${{ steps.dxt-name.outputs.filename }}
+          asset_name: gemini-cli-mcp-for-claude-${{ github.event.release.tag_name }}.dxt
+          asset_content_type: application/zip
+
+      - name: Upload DXT as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gemini-cli-mcp-dxt
+          path: ./mcp-server/*.dxt
+
+      - name: Create Installation Instructions
+        run: |
+          cat > INSTALL_DXT.md << EOF
+          # Installing Gemini CLI MCP for Claude
+
+          ## Option 1: Using DXT File (Recommended)
+          
+          1. Download the \`.dxt\` file from the [latest release](https://github.com/gunta/gemini-cli-mcp-for-claude-code/releases/latest)
+          2. Open Claude Desktop
+          3. Go to Settings → Extensions
+          4. Click "Install Extension" and select the downloaded \`.dxt\` file
+          5. Configure your Gemini API key or CLI path when prompted
+
+          ## Option 2: Manual Installation
+
+          See the [README](https://github.com/gunta/gemini-cli-mcp-for-claude-code#installation) for manual installation instructions.
+
+          ## Configuration
+
+          After installation, configure the extension with either:
+          - **Gemini API Key**: Set \`GEMINI_API_KEY\` environment variable
+          - **Gemini CLI Path**: Set \`GEMINI_CLI_PATH\` to your gemini CLI executable
+
+          ## Verifying Installation
+
+          1. Restart Claude Desktop
+          2. Ask Claude: "What media generation capabilities do you have?"
+          3. Claude should mention Gemini, Imagen, Veo, Lyria, and Chirp capabilities
+
+          ## Troubleshooting
+
+          If the extension doesn't load:
+          1. Check Claude Desktop logs for errors
+          2. Ensure Node.js 18+ is installed
+          3. Verify your Gemini credentials are set correctly
+
+          For more help, see our [documentation](https://gemini-mcp.mintlify.app) or [open an issue](https://github.com/gunta/gemini-cli-mcp-for-claude-code/issues).
+          EOF
+
+      - name: Upload Installation Instructions
+        uses: actions/upload-artifact@v4
+        with:
+          name: installation-instructions
+          path: ./INSTALL_DXT.md

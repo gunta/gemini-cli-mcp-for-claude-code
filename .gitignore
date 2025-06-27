@@ -62,6 +62,10 @@ Thumbs.db
 # Changesets (don't ignore)
 !.changeset/
 
+# DXT files
+*.dxt
+.dxt/
+
 # Test artifacts
 test-results/
 playwright-report/

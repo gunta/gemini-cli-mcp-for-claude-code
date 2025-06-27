@@ -1,0 +1,118 @@
+{
+  "dxt_version": "0.1.0",
+  "name": "gemini-cli-mcp-for-claude",
+  "version": "2.0.0",
+  "display_name": "Gemini CLI MCP for Claude",
+  "description": "MCP server providing Claude with Google's complete media generation suite via Gemini",
+  "long_description": "Supercharge Claude with Google's FULL media generation capabilities:\n\n- **Text Generation**: Gemini 2.0 Flash with 1M token context window\n- **Image Generation**: Imagen 3 for photorealistic images\n- **Video Generation**: Veo 2 for high-quality videos\n- **Audio Synthesis**: Chirp 3 HD for natural speech\n- **Music Generation**: Lyria for original music compositions\n- **Media Processing**: AVTool for format conversion and manipulation\n\nThis MCP server is self-documenting, meaning Claude automatically knows when to use Gemini's superior capabilities without needing manual CLAUDE.md configuration.",
+  "author": {
+    "name": "Gunther Brunner",
+    "email": "gunta@users.noreply.github.com"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  },
+  "icon": "https://raw.githubusercontent.com/gunta/gemini-cli-mcp-for-claude-code/main/assets/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gunta/gemini-cli-mcp-for-claude-code"
+  },
+  "homepage": "https://gemini-mcp.mintlify.app",
+  "documentation": "https://gemini-mcp.mintlify.app",
+  "support": "https://github.com/gunta/gemini-cli-mcp-for-claude-code/issues",
+  "screenshots": [
+    "https://raw.githubusercontent.com/gunta/gemini-cli-mcp-for-claude-code/main/assets/screenshot-1.png",
+    "https://raw.githubusercontent.com/gunta/gemini-cli-mcp-for-claude-code/main/assets/screenshot-2.png"
+  ],
+  "tools": [
+    {
+      "name": "gemini_generate_text",
+      "description": "Generate text using Google Gemini with 1M token context window"
+    },
+    {
+      "name": "gemini_search_web",
+      "description": "Search the web using Google's search capabilities"
+    },
+    {
+      "name": "imagen_generate_image",
+      "description": "Generate images using Google's Imagen 3"
+    },
+    {
+      "name": "veo_generate_video",
+      "description": "Generate videos using Google's Veo 2"
+    },
+    {
+      "name": "veo_image_to_video",
+      "description": "Convert images to videos with Veo 2"
+    },
+    {
+      "name": "chirp_synthesize_audio",
+      "description": "Synthesize speech using Chirp 3 HD"
+    },
+    {
+      "name": "lyria_generate_music",
+      "description": "Generate music using Google's Lyria"
+    }
+  ],
+  "tools_generated": false,
+  "prompts": [
+    {
+      "name": "analyze_and_improve",
+      "description": "Analyze content and provide improvements using Gemini's superior reasoning",
+      "text": "Analyze the following content and provide detailed improvements using Gemini's advanced reasoning capabilities: {{content}}"
+    }
+  ],
+  "prompts_generated": false,
+  "keywords": [
+    "mcp",
+    "gemini",
+    "google",
+    "ai",
+    "claude",
+    "imagen",
+    "veo",
+    "lyria",
+    "chirp",
+    "media-generation"
+  ],
+  "license": "ISC",
+  "compatibility": {
+    "claude_desktop": ">=0.7.3",
+    "platforms": ["darwin", "linux", "win32"],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  },
+  "user_config": {
+    "gemini_api_key": {
+      "type": "string",
+      "title": "Gemini API Key",
+      "description": "Your Google Gemini API key",
+      "required": false,
+      "env_var": "GEMINI_API_KEY"
+    },
+    "gemini_cli_path": {
+      "type": "string",
+      "title": "Gemini CLI Path",
+      "description": "Path to Gemini CLI executable",
+      "required": false,
+      "env_var": "GEMINI_CLI_PATH"
+    },
+    "gemini_model": {
+      "type": "string",
+      "title": "Gemini Model",
+      "description": "Default Gemini model to use",
+      "default": "gemini-2.0-flash-thinking-exp-1219",
+      "required": false,
+      "env_var": "GEMINI_MODEL"
+    }
+  }
+}
